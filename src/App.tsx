@@ -1,65 +1,61 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRocket } from "@fortawesome/free-solid-svg-icons";
-import FontExamples from "./components/FontExamples";
-import PixiExample from "./components/PixiExample";
-import Counter from "./components/Counter";
-import styles from "./App.module.css";
-
-const STACK = [
-  "TypeScript",
-  "React 19",
-  "Vite",
-  "Vitest",
-  "XState v5",
-  "PixiJS v8",
-  "CSS Modules",
-  "OxLint",
-  "Oxfmt",
-  "FontAwesome",
-  "Google Fonts",
-];
-
-const FEATURES = [
-  "State machine (XState)",
-  "WebGL rendering (PixiJS)",
-  "Google Fonts pre-loaded",
-  "FontAwesome icons",
-  "Type-safe with TypeScript",
-  "GitHub Pages ready",
-];
+import { useActorRef } from "@xstate/react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { SiteLayout } from "./components/SiteLayout";
+import { themeMachine } from "./machines/themeMachine";
+import { Home } from "./pages/Home";
+import { Placeholder } from "./pages/Placeholder";
 
 export default function App() {
-  return (
-    <main className={styles.app}>
-      <h1>
-        <FontAwesomeIcon icon={faRocket} className={styles.headerIcon} />
-        SPA (Single Page Application) Template
-      </h1>
+  const themeRef = useActorRef(themeMachine);
 
-      <section>
-        <h2>Stack</h2>
-        <ul>
-          {STACK.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      </section>
-
-      <section>
-        <h2>Features</h2>
-        <ul>
-          {FEATURES.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      </section>
-
-      <section>
-        <h2>Examples</h2>
-        <FontExamples />
-        <PixiExample />
-        <Counter />
-      </section>
-    </main>
+  const router = createBrowserRouter(
+    [
+      {
+        path: "/",
+        element: <SiteLayout themeRef={themeRef} />,
+        children: [
+          { index: true, element: <Home /> },
+          {
+            path: "gallery",
+            element: (
+              <Placeholder
+                title="Gallery"
+                description="A curated collection of projects — coming in Phase 2."
+              />
+            ),
+          },
+          {
+            path: "gallery/:slug",
+            element: (
+              <Placeholder
+                title="Project"
+                description="Project detail page — coming in Phase 2."
+              />
+            ),
+          },
+          {
+            path: "blog",
+            element: (
+              <Placeholder
+                title="Blog"
+                description="Long-form writing — coming in Phase 3."
+              />
+            ),
+          },
+          {
+            path: "blog/:slug",
+            element: (
+              <Placeholder
+                title="Post"
+                description="Article detail page — coming in Phase 3."
+              />
+            ),
+          },
+        ],
+      },
+    ],
+    { basename: "/personal-website" },
   );
+
+  return <RouterProvider router={router} />;
 }

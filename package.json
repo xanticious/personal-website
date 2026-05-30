@@ -24,6 +24,7 @@
     "pixi.js": "^8.8.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-router-dom": "^7.16.0",
     "xstate": "^5.19.2"
   },
   "license": "UNLICENSED",

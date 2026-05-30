@@ -1,0 +1,19 @@
+.page {
+  max-width: 72ch;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+.page h1 {
+  margin-bottom: 1rem;
+}
+
+.description {
+  color: var(--color-text-muted);
+  margin-bottom: 2rem;
+}
+
+.note {
+  color: var(--color-text-muted);
+  font-style: italic;
+}
