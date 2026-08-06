@@ -1,0 +1,132 @@
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+.header {
+  max-width: 72ch;
+  margin-bottom: 3rem;
+}
+
+.header h1 {
+  margin-bottom: 0.75rem;
+}
+
+.intro {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: minmax(140px, 36%) 1fr;
+  gap: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--color-surface);
+}
+
+.cardReverse {
+  direction: rtl;
+}
+
+.cardReverse > * {
+  direction: ltr;
+}
+
+.cardVisual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 12rem;
+  background: linear-gradient(
+    145deg,
+    var(--color-border) 0%,
+    var(--color-bg) 100%
+  );
+}
+
+.cardInitial {
+  font-family: "Lora", serif;
+  font-size: 3rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  opacity: 0.45;
+}
+
+.cardBody {
+  padding: 1.75rem 1.5rem;
+  background-color: var(--color-bg);
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.cardTitle a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.cardTitle a:hover {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+.cardDescription {
+  margin: 0 0 1rem;
+  color: var(--color-text);
+}
+
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem;
+}
+
+.tag {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 99px;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.25rem;
+  align-items: center;
+  font-size: 0.9375rem;
+}
+
+.more {
+  font-weight: 500;
+}
+
+@media (max-width: 640px) {
+  .card,
+  .cardReverse {
+    grid-template-columns: 1fr;
+    direction: ltr;
+  }
+
+  .cardVisual {
+    min-height: 6rem;
+  }
+}
